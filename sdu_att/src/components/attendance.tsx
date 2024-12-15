@@ -13,7 +13,7 @@ type Props = {
 
 function Attendance({getFilteredCourse, att, c, thisWeek, weeks, att_id, updateAttendance}: Props) {
   return getFilteredCourse(att).map((att, attIndex) => (
-        <td onClick={() => updateAttendance(attIndex  + (weeks), att_id)} key={`att-${c}-${attIndex}`} className="border border-gray-300 cursor-pointer px-4 py-2 text-green-600">
+        <td onClick={() => updateAttendance(attIndex  + (weeks), att_id)} key={`att-${c}-${attIndex}`} className="border border-gray-300 cursor-pointer px-2 py-2 text-green-600 text-center">
             {thisWeek > attIndex  + (weeks)? <div className={`${att!=0?"text-green-600":"text-red-600"} font-extrabold`}>{att != 0? '✓' : '✗'}</div>:""}
         </td>
     ))

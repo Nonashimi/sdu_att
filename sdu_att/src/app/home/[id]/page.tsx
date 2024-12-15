@@ -8,15 +8,17 @@ import { stateUser, user } from "@/redux/slice/usersSlice";
 
 const Page = () => {
   const { users } = useSelector((state: { users: stateUser }) => state.users);
-  const [userInfo, setUserInfo] = useState<user | undefined>(undefined);
+  const [userInfo, setUserInfo] = useState<user | null>(null);
 
   useEffect(() => {
-    const userId = localStorage.getItem("id");
-    if (userId) {
-      setUserInfo(users.find(u => u.number === userId));
+    if (typeof window !== "undefined") {
+      const userId = localStorage.getItem("id");
+      if (userId && users.length > 0) {
+        const foundUser = users.find((u) => u.number === userId);
+        setUserInfo(foundUser || null); 
+      }
     }
   }, [users]);
-
 
   const keys = userInfo ? Object.keys(userInfo) : [];
 
@@ -24,16 +26,16 @@ const Page = () => {
     <div>
       <h2 className="text-[#CC4200] text-[26px] font-bold">Home Page</h2>
       <div className="w-[100%] px-[10px] box-border flex items-start gap-[10px]">
-        <Image src={stu_photo} width={130} alt="photo" height={160} />
+        <Image src={stu_photo} width={130} height={160} alt="photo" priority />
         <table className="text-[13px] border">
           <tbody>
-            {keys.map(key => (
+            {keys.map((key) => (
               <tr key={key}>
                 <td className="border text-gray-600 py-[3px] px-[5px]">
                   {key}
                 </td>
                 <td className="border font-bold py-[3px] px-[5px]">
-                  {userInfo?.[key]}
+                  {userInfo?.[key as keyof user]}
                 </td>
               </tr>
             ))}
