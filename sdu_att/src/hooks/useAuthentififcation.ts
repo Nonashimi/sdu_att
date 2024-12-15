@@ -68,7 +68,7 @@ export const usefetchUsers = () =>{
 
 
 
-export const FetchIdByParams = (params:Promise<{id: number}>) =>{
+export const useFetchIdByParams = (params:Promise<{id: number}>) =>{
     let [id, setId] = useState(-1);
     const fetchIdByparams = async() =>{
         setId((await params).id);

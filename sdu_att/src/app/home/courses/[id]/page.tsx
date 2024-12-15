@@ -3,7 +3,7 @@
 
 import TableBody from '@/components/TableBody'
 import TableHead from '@/components/tableHead'
-import { FetchIdByParams, getCourse, getNameLectors, usefetchUsers, useLectorsAndCourses } from '@/hooks/useAuthentififcation'
+import { useFetchIdByParams, getCourse, getNameLectors, usefetchUsers, useLectorsAndCourses } from '@/hooks/useAuthentififcation'
 import { usePagination } from '@/hooks/usePagination'
 import React, { useState } from 'react'
 
@@ -11,11 +11,11 @@ type Props = {
     params: Promise<{id: number}>
 }
 
-function page({params}: Props) {
+function Page({params}: Props) {
     const {courses, lectors} = useLectorsAndCourses();
     const users = usefetchUsers();
     const thisWeek = 7;
-    const id = FetchIdByParams(params);
+    const id = useFetchIdByParams(params);
     const course = getCourse(id, courses);
     const {thisPage, getFilteredCourse, clickLeft, clickRight, pageTotal} = usePagination(course);
     const [accessToEdit, setAccessToEdit] = useState<boolean[]>(Array(10).fill(false));
@@ -46,4 +46,4 @@ function page({params}: Props) {
   )
 }
 
-export default page
+export default Page
