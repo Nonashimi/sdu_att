@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Attendance from "./attendance";
 import { course, updateAttendanceForCourse } from "@/redux/slice/coursesSection";
 import { user } from "@/redux/slice/usersSlice";

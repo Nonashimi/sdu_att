@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 export interface user{
     number: string, password: string, name: string
 }
-const page = () => {
+const Page = () => {
     const router = useRouter();
     const {user, handleUserNumber, handleUserPassword} = useAuth();
     const {users} = useSelector((state: {users: stateUser}) => state.users);
@@ -70,4 +70,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

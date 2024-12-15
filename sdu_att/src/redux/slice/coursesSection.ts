@@ -46,7 +46,7 @@ const coursesSLice = createSlice({
     reducers:{},
     extraReducers:(builder) =>{
            // pending
-           builder.addCase(fetchCourses.pending, (state, action) =>{
+           builder.addCase(fetchCourses.pending, (state) =>{
             state.loading = true;
         })
         // fulfilled

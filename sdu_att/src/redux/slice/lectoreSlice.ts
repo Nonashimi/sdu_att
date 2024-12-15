@@ -31,7 +31,7 @@ const lectorsSlice = createSlice({
     initialState,
     reducers:{},
     extraReducers:(builder) =>{
-        builder.addCase(fetchLectors.pending, (state, action) =>{
+        builder.addCase(fetchLectors.pending, (state) =>{
             state.loading = true;
         })
         builder.addCase(fetchLectors.fulfilled, (state, action) =>{

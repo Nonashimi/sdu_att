@@ -1,6 +1,4 @@
 "use client";
-
-import { stateId } from '@/redux/slice/IdSlice';
 import { chooseOne, sectionState } from '@/redux/slice/sectionSlice';
 import { store } from '@/redux/store/store';
 import Link from 'next/link';
