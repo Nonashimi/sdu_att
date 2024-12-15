@@ -1,7 +1,6 @@
 "use client";
 
 import { stateId } from '@/redux/slice/IdSlice';
-import { stateLogin } from '@/redux/slice/isLoginSlice';
 import { chooseOne, sectionState } from '@/redux/slice/sectionSlice';
 import { store } from '@/redux/store/store';
 import Link from 'next/link';
@@ -12,7 +11,6 @@ interface items{
     subItems: {title: string, href:string, choosed?:boolean}[],
 }
 const SideBar = () => {
-    const userId = useSelector((state:{id: stateId}) => state.id.id);
     const {section} = useSelector((state:{section:sectionState}) => state.section);
     const menuItems: items[] = [
       {

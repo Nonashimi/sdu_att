@@ -1,4 +1,3 @@
-import { course } from '@/redux/slice/coursesSection'
 import React from 'react'
 
 type Props = {

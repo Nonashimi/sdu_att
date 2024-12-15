@@ -2,9 +2,7 @@ import ContainerComponent from '@/components/Container'
 import Logo from '@/components/Logo'
 import NavBar from '@/components/NavBar'
 import SideBar from '@/components/SideBar'
-import React, { useEffect } from 'react'
-import { stateLogin } from "@/redux/slice/isLoginSlice"
-
+import React from 'react'
 
 
 const layout = ({children}: {children: React.ReactNode}) => {

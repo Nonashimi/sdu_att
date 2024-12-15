@@ -5,7 +5,7 @@ import TableBody from '@/components/TableBody'
 import TableHead from '@/components/tableHead'
 import { FetchIdByParams, getCourse, getNameLectors, usefetchUsers, useLectorsAndCourses } from '@/hooks/useAuthentififcation'
 import { usePagination } from '@/hooks/usePagination'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 type Props = {
     params: Promise<{id: number}>

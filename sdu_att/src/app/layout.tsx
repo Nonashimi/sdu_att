@@ -1,7 +1,5 @@
 "use client"
 
-// import type { Metadata } from "next";
-
 import {Provider} from "react-redux"
 import localFont from "next/font/local";
 import "./globals.css";

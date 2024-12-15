@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import logo from "../../../public/login-logo-ps.png";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -15,7 +15,7 @@ export interface user{
 const page = () => {
     const router = useRouter();
     const {user, handleUserNumber, handleUserPassword} = useAuth();
-    const {users, loading, error} = useSelector((state: {users: stateUser}) => state.users);
+    const {users} = useSelector((state: {users: stateUser}) => state.users);
     useEffect(() =>{
         fetchUsersEL();
     },[]);

@@ -6,7 +6,7 @@ import stu_photo from "../../../../public/stud_photo.jpeg";
 import { useSelector } from "react-redux";
 import { stateUser, user } from "@/redux/slice/usersSlice";
 
-const Page = ({ params }: { params: { id?: string } }) => {
+const Page = () => {
   const { users } = useSelector((state: { users: stateUser }) => state.users);
   const [userInfo, setUserInfo] = useState<user | undefined>(undefined);
 
