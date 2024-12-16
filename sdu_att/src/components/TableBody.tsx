@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Attendance from "./attendance";
-import { course, updateAttendanceForCourse } from "@/redux/slice/coursesSection";
+import { atten, course, updateAttendanceForCourse } from "@/redux/slice/coursesSection";
 import { user } from "@/redux/slice/usersSlice";
 import { store } from "@/redux/store/store";
 import { getAttendanceData } from "@/hooks/useAttendance";
@@ -16,6 +16,7 @@ interface Props {
     weeks: number;
     filteredAccessToEdit: boolean[];
     editAccess: (index: number) => void;
+    peopleWhoHere: number[]
 }
 
 function TableBody({
@@ -26,12 +27,12 @@ function TableBody({
     weeks,
     filteredAccessToEdit,
     editAccess,
+    peopleWhoHere
 }: Props) {
     const attendanceData = getAttendanceData(course, thisWeek, users);
 
     const updatedAttendance = (clickedWeek: number, attendance_id: number) => {
         if (!filteredAccessToEdit[clickedWeek - weeks] || !course || clickedWeek >= thisWeek) return;
-
         const updatedAttendanceData = course.attendance.map((att) =>
             att.id === attendance_id
                 ? {
@@ -47,6 +48,32 @@ function TableBody({
             updateAttendanceForCourse({ course_id: course.id, attendance: updatedAttendanceData })
         );
     };
+    const updateAttendanceByPhoto = () => {
+        if (!course) return;
+        const updatedData:atten[] = course.attendance.map((att) => {
+            if (peopleWhoHere.includes(att.id)) {
+                return {
+                    ...att, 
+                    att: att.att.map((a, index) =>
+                        filteredAccessToEdit[index] ? 1 : a 
+                    )
+                };
+            }
+            return att;
+        });
+    
+        store.dispatch(
+            updateAttendanceForCourse({
+                course_id: course.id, 
+                attendance: updatedData 
+            })
+        );
+    };
+
+    useEffect(() =>{
+        updateAttendanceByPhoto();
+    }, [peopleWhoHere]);
+    
 
     const renderAccessCheckboxes = () =>
         filteredAccessToEdit.map((access, index) => (

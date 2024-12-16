@@ -2,12 +2,12 @@
 
 import { createSlice } from "@reduxjs/toolkit"
 
-export interface stateId {
+export interface StateId {
     id: string
 }
 
-const initialState:stateId  = {
-    id:  "220107006",
+const initialState:StateId  = {
+    id:  "220107016",
 }
 
 const idSlice = createSlice({

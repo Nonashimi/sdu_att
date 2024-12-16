@@ -4,16 +4,18 @@ import React, { useEffect, useState } from "react";
 import book_icon from "../../public/book_icon.png";
 import { useSelector } from "react-redux";
 import { sectionState } from "@/redux/slice/sectionSlice";
-import stu_photo from "../../public/stud_photo.jpeg";
+import stu_photo from "../../public/yernar.jpg";
 import { fetchUsers, stateUser, user } from "@/redux/slice/usersSlice";
 import { store } from "@/redux/store/store";
+import { StateId } from "@/redux/slice/IdSlice";
 
 const NavBar = () => {
     const [currentUserId, setCurrentUserId] = useState<string | null>(null);
+    const id = useSelector((state: {id: StateId}) => state.id.id);
+
 
     useEffect(() => {
         store.dispatch(fetchUsers());
-        const id = localStorage.getItem("id");
         setCurrentUserId(id);
     }, []);
 
@@ -33,9 +35,13 @@ const NavBar = () => {
                 {Object.keys(user)
                     .filter((key) => !excludedKeys.includes(key))
                     .map((key) => (
-                        <div key={key} className="flex gap-2 text-[13px]">
+                        key == "pass"?
+                            "":
+                            <div key={key} className="flex gap-2 text-[13px]">
+                            
                             <strong>{key}:</strong> <span>{user[key]}</span>
                         </div>
+                                            
                     ))}
             </div>
         );
@@ -68,8 +74,8 @@ const NavBar = () => {
                             )}
                         </div>
                     </div>
-                    <div className="w-[100px]">
-                        <Image src={stu_photo} width={130} alt="Student Photo" height={160} />
+                    <div className="w-[130px]">
+                        <Image className="w-[130px] h-[160px] object-cover" src={stu_photo} width={130} alt="Student Photo" height={160} />
                     </div>
                 </div>
             )}

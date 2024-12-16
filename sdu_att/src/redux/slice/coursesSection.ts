@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
-interface atten {
+export interface atten {
   id: number,
   att: number[]
 }

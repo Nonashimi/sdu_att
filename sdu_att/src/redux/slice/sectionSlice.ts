@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface sectionState {
   section: { title: string, href: string, choosed: boolean }[];
 }
-const sec = [{"title":"Home page","href":"/home/220107002","choosed":false},{"title":"Consent Requests","href":"/home/other","choosed":false},{"title":"Take attendance","href":"/home/take_attendance","choosed":true},{"title":"Wish list","href":"/home/other","choosed":false},{"title":"Withdrawals","href":"/home/other","choosed":false}];
+const sec = [{"title":"Home page","href":"/home/220107015","choosed":false},{"title":"Consent Requests","href":"/home/other","choosed":false},{"title":"Take attendance","href":"/home/take_attendance","choosed":true},{"title":"Wish list","href":"/home/other","choosed":false},{"title":"Withdrawals","href":"/home/other","choosed":false}];
 const initialState: sectionState = {
   section: (() => {
     const storedSection = sec;

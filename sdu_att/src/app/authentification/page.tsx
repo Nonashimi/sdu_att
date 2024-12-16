@@ -1,7 +1,6 @@
 "use client";
-
 import React, { useEffect } from "react";
-import logo from "/public/login-logo-ps.png"; // убран относительный путь
+import logo from "/public/login-logo-ps.png"; 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { store } from "@/redux/store/store";

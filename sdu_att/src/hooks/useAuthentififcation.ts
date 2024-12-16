@@ -43,7 +43,7 @@ export const useLectorsAndCourses = () =>{
     }    
     useEffect(() =>{
         fetcData();
-    });
+    },[]);
 
 
     return {courses, lectors};
