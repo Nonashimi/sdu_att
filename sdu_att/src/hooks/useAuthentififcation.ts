@@ -9,12 +9,12 @@ import { useSelector } from "react-redux";
 export const useAuth = () =>{
     const [user, setUser] = useState<{number:string, password: string}>({number:"", password: ""});
     const handleUserNumber = (value:string) =>{
-       setUser({...user, number: value});
+        setUser(prev => ({ ...prev, number: value }));
     }
+    
     const handleUserPassword = (value: string) =>{
-        setUser({...user, password: value});
+        setUser(prev => ({ ...prev, password: value }));
         console.log(value);
-
     }
 
     return {user, handleUserNumber, handleUserPassword};
@@ -30,7 +30,7 @@ export const getNameLectors = (lector_id:number, lectors:lector[]) =>{
 
 export const useLectorsAndCourses = () =>{
     const {courses} = useSelector((state: {courses: stateCourses}) => state.courses);
-    const {lectors, error} = useSelector((state: {lectors: stateLectors}) => state.lectors);
+    const {lectors} = useSelector((state: {lectors: stateLectors}) => state.lectors);
     const fetchCoursesComponent = async() =>{
         await store.dispatch(fetchCourses());
     }
@@ -43,7 +43,7 @@ export const useLectorsAndCourses = () =>{
     }    
     useEffect(() =>{
         fetcData();
-    },[]);
+    });
 
 
     return {courses, lectors};
@@ -53,30 +53,38 @@ export const getCourse = (id:number, courses:course[]) =>{
     return courses.find(course => course.id == id);
 }
 
-export const usefetchUsers = () =>{
-    const {users} = useSelector((state: {users: stateUser}) => state.users);
-    const fetchingUsers = async() =>{
-        await store.dispatch(fetchUsers());
-    }
+export const usefetchUsers = () => {
+  const { users } = useSelector((state: { users: stateUser }) => state.users);
 
-    useEffect(() =>{
-        fetchingUsers();
-    },[]);
+  useEffect(() => {
+    const fetchingUsers = async () => {
+      await store.dispatch(fetchUsers());
+    };
 
-    return users;
-}
+    fetchingUsers();
+  }, [store.dispatch]); 
 
-
-
-export const useFetchIdByParams = (params:Promise<{id: number}>) =>{
-    let [id, setId] = useState(-1);
-    const fetchIdByparams = async() =>{
-        setId((await params).id);
-   }
-   useEffect(() =>{
-        fetchIdByparams();
-   },[params]);
+  return users;
+};
 
 
-   return id;
-}
+export const useFetchIdByParams = (params: Promise<{ id: number }>) => {
+    const [id, setId] = useState(-1);
+
+    useEffect(() => {
+        let isMounted = true; 
+
+        const fetchIdByParams = async () => {
+            const result = await params;
+            if (isMounted) setId(result.id); 
+        };
+
+        fetchIdByParams();
+
+        return () => {
+            isMounted = false; 
+        };
+    }, [params]);
+
+    return id;
+};

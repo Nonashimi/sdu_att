@@ -11,7 +11,7 @@ export function getAttendanceStats(att: number[], thisWeek: number) {
 export const getAttendanceData = (course: course | undefined, thisWeek: number, users: user[]) => {
     if (!course) return [];
 
-    return course.students_id.map((studentId, index) => {
+    return course.students_id.map((studentId) => {
         const att = course.attendance[studentId - 1]?.att || [];
         const stats = getAttendanceStats(att, thisWeek);
         return {

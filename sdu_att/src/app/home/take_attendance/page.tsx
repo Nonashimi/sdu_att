@@ -3,7 +3,7 @@ import React from 'react'
 
 type Props = {}
 
-function Page({}: Props) {
+function Page() {
   return (
     <div>
       <CourseList/>

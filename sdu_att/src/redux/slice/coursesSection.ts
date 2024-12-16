@@ -27,7 +27,7 @@ const initialState:stateCourses = {
 };
 
 
-export const fetchCourses = createAsyncThunk<any[]>("courses/fetchCourses", async() =>{
+export const fetchCourses = createAsyncThunk<course[]>("courses/fetchCourses", async() =>{
     const {data} = await axios.get("https://81f65749004d8789.mokky.dev/courses");
     return data;
 });
@@ -61,7 +61,6 @@ const coursesSLice = createSlice({
             state.error = action.error.message || "An error occurred";
         })
 
-        "update attendance"
         builder.addCase(updateAttendanceForCourse.pending, (state) => {
           state.loading = true;
         })

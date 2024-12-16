@@ -4,9 +4,8 @@ import React from 'react'
 import CourseItem from './CourseItem';
 import { useLectorsAndCourses } from '@/hooks/useAuthentififcation';
 
-type Props = {}
 
-function CourseList({}: Props) {
+function CourseList() {
    const {courses, lectors} = useLectorsAndCourses();
   return (
     <div className='px-[10px]'>

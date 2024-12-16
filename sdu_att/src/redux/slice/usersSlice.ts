@@ -16,7 +16,7 @@ const initialState:stateUser = {
 }
 
 
-export const fetchUsers = createAsyncThunk<any[]>("users/fetchUsers", async() =>{
+export const fetchUsers = createAsyncThunk<user[]>("users/fetchUsers", async() =>{
     const {data} = await axios.get("https://81f65749004d8789.mokky.dev/users");
     return data;
 });
