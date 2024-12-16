@@ -5,7 +5,7 @@ export interface stateId {
 }
 
 const initialState:stateId  = {
-    id: localStorage.getItem("id") + "",
+    id:  typeof window !== "undefined" ? localStorage.getItem("id") || "" : "",
 }
 
 const idSlice = createSlice({
