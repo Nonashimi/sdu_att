@@ -1,4 +1,5 @@
 "use client"
+
 import { createSlice } from "@reduxjs/toolkit"
 
 export interface stateId {
@@ -6,7 +7,7 @@ export interface stateId {
 }
 
 const initialState:stateId  = {
-    id:  typeof window !== "undefined" ? localStorage.getItem("id") || "" : "",
+    id:  "220107006",
 }
 
 const idSlice = createSlice({
