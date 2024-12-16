@@ -2,7 +2,7 @@ import { course, fetchCourses, stateCourses } from "@/redux/slice/coursesSection
 import { fetchLectors, lector, stateLectors } from "@/redux/slice/lectoreSlice";
 import { fetchUsers, stateUser } from "@/redux/slice/usersSlice";
 import { store } from "@/redux/store/store";
-import { useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 
@@ -53,7 +53,7 @@ export const getCourse = (id:number, courses:course[]) =>{
     return courses.find(course => course.id == id);
 }
 
-export const usefetchUsers = () => {
+export const useFetchUsers = () => {
   const { users } = useSelector((state: { users: stateUser }) => state.users);
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export const usefetchUsers = () => {
     };
 
     fetchingUsers();
-  }, [store.dispatch]); 
+  }, []); 
 
   return users;
 };

@@ -3,7 +3,7 @@
 
 import TableBody from '@/components/TableBody'
 import TableHead from '@/components/tableHead'
-import { useFetchIdByParams, getCourse, getNameLectors, usefetchUsers, useLectorsAndCourses } from '@/hooks/useAuthentififcation'
+import { useFetchIdByParams, getCourse, getNameLectors, useFetchUsers, useLectorsAndCourses } from '@/hooks/useAuthentififcation'
 import { usePagination } from '@/hooks/usePagination'
 import React, { useState } from 'react'
 
@@ -13,7 +13,7 @@ type Props = {
 
 function Page({params}: Props) {
     const {courses, lectors} = useLectorsAndCourses();
-    const users = usefetchUsers();
+    const users = useFetchUsers();
     const thisWeek = 7;
     const id = useFetchIdByParams(params);
     const course = getCourse(id, courses);

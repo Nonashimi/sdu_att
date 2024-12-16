@@ -1,7 +1,6 @@
 import CourseList from '@/components/courseList'
 import React from 'react'
 
-type Props = {}
 
 function Page() {
   return (
